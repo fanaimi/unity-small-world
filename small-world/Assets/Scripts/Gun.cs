@@ -19,6 +19,8 @@ public class Gun : MonoBehaviour
         
     }
 
+
+
     
     //public override void OnInteractionStart()
     public void foo()
