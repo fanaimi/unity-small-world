@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,14 +7,28 @@ using UnityEngine;
 public class PlanetController : MonoBehaviour
 {
 
-    [SerializeField] private GameObject[] PlanetPrefabs = new GameObject[7];
+    [SerializeField] private GameObject[] m_planetPrefabs = new GameObject[7];
+    [SerializeField] private Transform[] m_planetShooters = new Transform[6];
     
     
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        InvokeRepeating("IntantiateRandomPlanetAtRandomShooter", 1, 1);
+    }
+
+    private void IntantiateRandomPlanetAtRandomShooter()
+    {
+        int randPlanetIndex = UnityEngine.Random.Range(0, m_planetPrefabs.Length-1);
+        int randShooterIndex = UnityEngine.Random.Range(0, m_planetShooters.Length-1);
+
+        Instantiate(
+            m_planetPrefabs[randPlanetIndex], 
+            m_planetShooters[randShooterIndex].position, 
+            Quaternion.identity
+        );
+
     }
 
     // Update is called once per frame

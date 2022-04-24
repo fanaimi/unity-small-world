@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("InstantiatePlanet", 1f, 5f);
+        // InvokeRepeating("InstantiatePlanet", 1f, 5f);
     }
 
     private void InstantiatePlanet()
