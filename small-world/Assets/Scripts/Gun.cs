@@ -20,23 +20,31 @@ public class Gun : MonoBehaviour
     }
 
 
-
-    
-    //public override void OnInteractionStart()
-    public void foo()
+    public void OnGrabbedGun()
     {
+        print("grabbed");
+        // setting gun position in hand
+
+        // rotating gun 
+    }
+    
+    public void OnGunTriggerPressed()
+    {
+        print("bang!");
         // base.OnInteractionStart();
         // print("gun here");
         // AudioManager.instance.Play("bang");
+        
+        
         m_munition.Rotate(25,0,0);
         
-        Rigidbody m_newBullet = 
+       /* Rigidbody m_newBullet = 
             Instantiate(m_bulletPrefab, m_gunSpawningPoint.position, m_gunSpawningPoint.rotation);
 
         m_newBullet.AddForce(m_newBullet.transform.forward * m_shootForce);
 
         Destroy(m_newBullet, 5f);
-
+        */
         
     }
     
