@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.XR.Interaction.Toolkit;
 
 /// <summary>
 /// @gObj SciFi Gun
@@ -16,17 +17,26 @@ public class Gun : MonoBehaviour
     [SerializeField] private float m_shootForce;
     [SerializeField] private Rigidbody m_rb;
     [SerializeField] private AudioSource m_bang;
-    
+    [SerializeField] private XRInteractorLineVisual m_leftLineVisual; 
+    [SerializeField] private XRInteractorLineVisual m_rightLineVisual; 
    
 
 
     public void OnGrabbedGun()
     {
         print("grabbed");
-        // setting gun position in hand
+        m_leftLineVisual.enabled = false;
+        m_rightLineVisual.enabled = false;
 
-        // rotating gun 
     }
+
+    public void OnReleasedGun()
+    {
+
+        m_leftLineVisual.enabled = true;
+        m_rightLineVisual.enabled = true;
+    }
+
     
     public void OnGunTriggerPressed()
     {
@@ -39,7 +49,7 @@ public class Gun : MonoBehaviour
        Rigidbody m_newBullet = 
             Instantiate(m_bulletPrefab, m_gunSpawningPoint.position, m_gunSpawningPoint.rotation);
 
-        m_newBullet.AddForce(m_newBullet.transform.forward * m_shootForce);
+        // m_newBullet.AddForce(m_newBullet.transform.forward * m_shootForce);
 
         Destroy(m_newBullet, 5f);
         

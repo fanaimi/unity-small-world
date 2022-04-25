@@ -2330,6 +2330,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SciFiGun
       objectReference: {fileID: 0}
+    - target: {fileID: 1653559435669199210, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
+      propertyPath: m_leftLineVisual
+      value: 
+      objectReference: {fileID: 1022379746}
+    - target: {fileID: 1653559435669199210, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
+      propertyPath: m_rightLineVisual
+      value: 
+      objectReference: {fileID: 1395756693}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
 --- !u!4 &1692144159 stripped

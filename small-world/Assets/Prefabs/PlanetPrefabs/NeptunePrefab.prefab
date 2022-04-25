@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3948236527335908468}
   - component: {fileID: 3948236527335908471}
   - component: {fileID: 3948236527335908470}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NeptunePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

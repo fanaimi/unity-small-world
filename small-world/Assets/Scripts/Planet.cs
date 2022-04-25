@@ -30,15 +30,9 @@ public class Planet : MonoBehaviour
     {
         if (collision.gameObject.layer == 6 ) // floor
         {
-            //Destroy(gameObject);
-        }
-
-
-        if (collision.gameObject.layer == 7) // bullet
-        {
-            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
+
     }
 
 }
