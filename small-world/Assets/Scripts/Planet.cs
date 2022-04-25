@@ -5,8 +5,6 @@ using UnityEngine;
 public class Planet : MonoBehaviour
 {
     public Transform m_planet;
-
-    
     public Rigidbody m_rb;
 
     [SerializeField] private Vector3 m_spawnPoint;
@@ -18,21 +16,29 @@ public class Planet : MonoBehaviour
     private void Start()
     {
         if (m_planet == null) return;
-        m_shootingDirection += new Vector3(
-                Random.Range(-1f, 1f),
+        m_shootingDirection = new Vector3(
+                0, //Random.Range(-2f, 2f),
                 Random.Range(10, 30),
-                Random.Range(-1f, 1f)
+                0 //Random.Range(-2f, 2f)
             );
-
+        print(m_shootingDirection * UnityEngine.Random.Range(30, m_maxThrust));
         m_rb.AddForce(m_shootingDirection * UnityEngine.Random.Range(30, m_maxThrust) );
     }
 
 
-
-    private void FixedUpdate()
+    private void OnCollisionEnter(Collision collision)
     {
-            // m_rb.AddForce(m_shootingDirection * m_Thrust * Time.fixedDeltaTime);
-        
+        if (collision.gameObject.layer == 6 ) // floor
+        {
+            //Destroy(gameObject);
+        }
+
+
+        if (collision.gameObject.layer == 7) // bullet
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
     }
 
 }
