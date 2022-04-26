@@ -6,33 +6,34 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float m_speed = 100f;
 
-    private Vector3 m_prevPos;
-
-    private void Start()
-    {
-        m_prevPos = transform.position;
-    }
-
     // Update is called once per frame
     void Update()
     {
-        m_prevPos = transform.position;
+        // moving bullets
         transform.Translate(0, 0, m_speed * Time.deltaTime);
-        RaycastHit[] hits = Physics.RaycastAll(
-            new Ray(
-                m_prevPos, 
-                (transform.position - m_prevPos).normalized),
-                (transform.position - m_prevPos).magnitude
-        );
-
-        foreach (var hit in hits)
+      
+        // collision detection with Raycast
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 1f))
         {
-            if (hit.collider.gameObject.layer == 8)
+            //Debug.DrawLine(transform.position, transform.position + new Vector3(100, 100, 100), Color.green, 5f);
+            
+
+            if (hit.transform.gameObject.layer == 8) // 8: planets
             {
+                // we hit a planet, destroying planet and bullet
                 Destroy(gameObject);
                 Destroy(hit.collider.gameObject);
+
+                // updating score
+
+                // showing particle system animation
+
+                // example on how to invoke GameManager funcitons
+                GameManager.Instance.TestFoo();
             }
         }
+
 
     }
 }

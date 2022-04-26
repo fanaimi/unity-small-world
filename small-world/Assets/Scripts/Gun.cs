@@ -24,17 +24,17 @@ public class Gun : MonoBehaviour
 
     public void OnGrabbedGun()
     {
-        print("grabbed");
-        m_leftLineVisual.enabled = false;
-        m_rightLineVisual.enabled = false;
+        // print("grabbed");
+        // m_leftLineVisual.enabled = false;
+        // m_rightLineVisual.enabled = false;
 
     }
 
     public void OnReleasedGun()
     {
 
-        m_leftLineVisual.enabled = true;
-        m_rightLineVisual.enabled = true;
+       // m_leftLineVisual.enabled = true;
+       // m_rightLineVisual.enabled = true;
     }
 
     
