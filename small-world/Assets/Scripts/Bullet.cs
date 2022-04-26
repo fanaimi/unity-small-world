@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
                 // showing particle system animation
 
                 // example on how to invoke GameManager funcitons
-                GameManager.Instance.TestFoo();
+                // GameManager.Instance.TestFoo();
             }
         }
 
