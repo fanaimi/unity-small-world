@@ -306,7 +306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1653559435475268476, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
       propertyPath: m_Name
-      value: SciFiGun (1)
+      value: RightGun
       objectReference: {fileID: 0}
     - target: {fileID: 1653559435669199210, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
       propertyPath: m_shootForce
@@ -1010,6 +1010,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3f261d69052264486b0938d70b8e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_rightCtrlChars: 0
+  m_btnA_pressed: 0
+  m_btnB_pressed: 0
+  m_btnX_pressed: 0
+  m_btnY_pressed: 0
 --- !u!1 &934850580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,7 +2376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1653559435475268476, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
       propertyPath: m_Name
-      value: SciFiGun
+      value: LeftGun
       objectReference: {fileID: 0}
     - target: {fileID: 1653559435669199210, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
       propertyPath: m_leftLineVisual

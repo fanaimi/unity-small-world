@@ -17,10 +17,9 @@ public class Gun : MonoBehaviour
     [SerializeField] private float m_shootForce;
     [SerializeField] private Rigidbody m_rb;
     [SerializeField] private AudioSource m_bang;
-    [SerializeField] private XRInteractorLineVisual m_leftLineVisual; 
-    [SerializeField] private XRInteractorLineVisual m_rightLineVisual; 
-   
+    [SerializeField] private XRInteractorLineVisual m_LineVisual; 
 
+    [SerializeField] public enum GunHandType { LeftHandGun, RightHandGun };
 
     public void OnGrabbedGun()
     {
