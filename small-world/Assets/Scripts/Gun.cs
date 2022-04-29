@@ -19,10 +19,16 @@ public class Gun : MonoBehaviour
     [SerializeField] private float m_shootForce;
     [SerializeField] private Rigidbody m_rb;
     [SerializeField] private AudioSource m_bang;
+    [SerializeField] private AudioSource m_emptyClick;
+    [SerializeField] private AudioSource m_openCylinder;
+    [SerializeField] private AudioSource m_closeCylinder;   
     [SerializeField] private XRInteractorLineVisual m_LineVisual;
 
     [SerializeField] private  enum GunHandSide { LeftHandGun, RightHandGun };
     [SerializeField] private GunHandSide m_gunSide;
+
+    private int m_maxBulletsNo  = 7;
+    private int m_bulletsLeft;
 
     [SerializeField] private bool m_isBeingHeld;
     [SerializeField] private bool m_isLoaded;
@@ -32,6 +38,7 @@ public class Gun : MonoBehaviour
     {
         m_isLoaded = true;
         m_isCylinderIn = true;
+        m_bulletsLeft = m_maxBulletsNo;
     }
 
     public void OnGrabbedGun()
@@ -52,20 +59,34 @@ public class Gun : MonoBehaviour
     
     public void OnGunTriggerPressed()
     {
-        //print("bang!");
-        m_bang.Play();
 
-        m_munition.Rotate(25,0,0);
-        m_trigger.Rotate(0,0,25);
-        
-       Rigidbody m_newBullet = 
-            Instantiate(m_bulletPrefab, m_gunSpawningPoint.position, m_gunSpawningPoint.rotation);
+        Debug.Log(gameObject.name + ": -" + m_bulletsLeft);
 
-        // m_newBullet.AddForce(m_newBullet.transform.forward * m_shootForce);
+        if (m_isLoaded && m_isCylinderIn) {
+            //print("bang!");
+            if (m_bulletsLeft > 0)
+            { 
+                m_bulletsLeft--;
+                m_bang.Play();
+                m_munition.Rotate(25, 0, 0);
+                m_trigger.Rotate(0, 0, 25);
+                Rigidbody m_newBullet =
+                Instantiate(m_bulletPrefab, m_gunSpawningPoint.position, m_gunSpawningPoint.rotation);
+                Destroy(m_newBullet, 5f);
+            }    
+               
+            else m_isLoaded = false;
+            
+        }
 
-        Destroy(m_newBullet, 5f);
-        
-        
+        if (!m_isLoaded && m_isCylinderIn)
+        {
+            print("click!");
+            m_emptyClick.Play();
+            m_munition.Rotate(25, 0, 0);
+            m_trigger.Rotate(0, 0, 25);
+        }
+
     }
 
 
@@ -80,6 +101,8 @@ public class Gun : MonoBehaviour
     {
         if (m_isBeingHeld && m_isCylinderIn)
         {
+            m_openCylinder.Play();
+            m_munition.position = m_cylinderOUT.position;
             m_isCylinderIn = false;
             Debug.Log(gameObject.name + " open cylinder");
         }
@@ -90,7 +113,11 @@ public class Gun : MonoBehaviour
 
         if (m_isBeingHeld && !m_isCylinderIn)
         {
+            m_closeCylinder.Play();
+            m_munition.position = m_cylinderIN.position;
             m_isCylinderIn = true;
+            m_isLoaded = true;
+            m_bulletsLeft = m_maxBulletsNo;
             Debug.Log(gameObject.name + " close cylinder");
         }
     }

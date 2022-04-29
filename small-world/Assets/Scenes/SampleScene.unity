@@ -333,11 +333,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3247706434203557738, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3484470772864036394, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
@@ -1042,7 +1042,7 @@ MonoBehaviour:
   m_btnA_pressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1065484655}
+      - m_Target: {fileID: 259927264}
         m_TargetAssemblyTypeName: Gun, Assembly-CSharp
         m_MethodName: OnPrimaryBtnPressed
         m_Mode: 1
@@ -1057,7 +1057,7 @@ MonoBehaviour:
   m_btnB_pressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1065484655}
+      - m_Target: {fileID: 259927264}
         m_TargetAssemblyTypeName: Gun, Assembly-CSharp
         m_MethodName: OnSecondaryBtnPressed
         m_Mode: 1
@@ -1072,7 +1072,7 @@ MonoBehaviour:
   m_btnX_pressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 259927264}
+      - m_Target: {fileID: 1065484655}
         m_TargetAssemblyTypeName: Gun, Assembly-CSharp
         m_MethodName: OnPrimaryBtnPressed
         m_Mode: 1
@@ -1087,7 +1087,7 @@ MonoBehaviour:
   m_btnY_pressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 259927264}
+      - m_Target: {fileID: 1065484655}
         m_TargetAssemblyTypeName: Gun, Assembly-CSharp
         m_MethodName: OnSecondaryBtnPressed
         m_Mode: 1
