@@ -166,7 +166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133962956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 773853330}
@@ -253,6 +253,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &259927264 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1653559435669199210, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
+  m_PrefabInstance: {fileID: 347036873}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39399f1a1ade9dd4a9ec9019af303a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &347036873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -266,7 +277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1653559435474775900, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.091
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 1653559435474775900, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -309,8 +320,24 @@ PrefabInstance:
       value: RightGun
       objectReference: {fileID: 0}
     - target: {fileID: 1653559435669199210, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
+      propertyPath: m_gunSide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653559435669199210, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
+      propertyPath: m_LineVisual
+      value: 
+      objectReference: {fileID: 1395756693}
+    - target: {fileID: 1653559435669199210, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
       propertyPath: m_shootForce
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3247706434203557738, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484470772864036394, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
@@ -1010,11 +1037,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3f261d69052264486b0938d70b8e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rightCtrlChars: 0
-  m_btnA_pressed: 0
-  m_btnB_pressed: 0
-  m_btnX_pressed: 0
-  m_btnY_pressed: 0
+  m_LEFTgun: {fileID: 1065484655}
+  m_Rightgun: {fileID: 259927264}
+  m_btnA_pressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1065484655}
+        m_TargetAssemblyTypeName: Gun, Assembly-CSharp
+        m_MethodName: OnPrimaryBtnPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_btnB_pressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1065484655}
+        m_TargetAssemblyTypeName: Gun, Assembly-CSharp
+        m_MethodName: OnSecondaryBtnPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_btnX_pressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 259927264}
+        m_TargetAssemblyTypeName: Gun, Assembly-CSharp
+        m_MethodName: OnPrimaryBtnPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_btnY_pressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 259927264}
+        m_TargetAssemblyTypeName: Gun, Assembly-CSharp
+        m_MethodName: OnSecondaryBtnPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &934850580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,6 +1795,17 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 7779212132400271959, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ButtonPressPoint: 0.5
+--- !u!114 &1065484655 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1653559435669199210, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
+  m_PrefabInstance: {fileID: 1484424301}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39399f1a1ade9dd4a9ec9019af303a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1195170665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2336,7 +2431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1653559435474775900, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.055
+      value: -0.24
       objectReference: {fileID: 0}
     - target: {fileID: 1653559435474775900, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2378,6 +2473,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftGun
       objectReference: {fileID: 0}
+    - target: {fileID: 1653559435669199210, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
+      propertyPath: m_LineVisual
+      value: 
+      objectReference: {fileID: 1022379746}
     - target: {fileID: 1653559435669199210, guid: feeea3f9150028f4ba8dc7560500bee6, type: 3}
       propertyPath: m_leftLineVisual
       value: 
@@ -2422,6 +2521,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8cc61756af65fd4eb554896c752a6a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_holdingLEFTGun: 0
+  m_holdingRIGHTGun: 0
+  m_LEFTGunLoaded: 0
+  m_RIGHTGunLoaded: 0
+  m_LEFTGunAmmoIn: 0
+  m_LEFTGunAmmoRight: 0
 --- !u!4 &1724875604
 Transform:
   m_ObjectHideFlags: 0

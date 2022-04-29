@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 1653559435669199211}
   - component: {fileID: 3194554098163575722}
   - component: {fileID: 473581474017887997}
+  - component: {fileID: 3335480061288263493}
   m_Layer: 0
   m_Name: SciFiGun
   m_TagString: Untagged
@@ -250,11 +251,16 @@ MonoBehaviour:
   m_munition: {fileID: 1653559435474775898}
   m_trigger: {fileID: 1653559435474775902}
   m_gunSpawningPoint: {fileID: 1354402197503367970}
+  m_cylinderIN: {fileID: 0}
+  m_cylinderOUT: {fileID: 0}
   m_shootForce: 150
   m_rb: {fileID: 1653559435669199204}
   m_bang: {fileID: 473581474017887997}
-  m_leftLineVisual: {fileID: 0}
-  m_rightLineVisual: {fileID: 0}
+  m_LineVisual: {fileID: 0}
+  m_gunSide: 0
+  m_isBeingHeld: 0
+  m_isLoaded: 0
+  m_isCylinderIn: 0
 --- !u!114 &1653559435669199211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,8 +435,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.15430619, y: 0.10593702, z: 0.03530491}
-  m_Center: {x: -0.0034691617, y: 0.015033804, z: 0.0012276061}
+  m_Size: {x: 0.037926525, y: 0.10593702, z: 0.06310269}
+  m_Center: {x: -0.0010567084, y: 0.015033804, z: -0.040324137}
 --- !u!82 &473581474017887997
 AudioSource:
   m_ObjectHideFlags: 0
@@ -527,6 +533,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &3335480061288263493
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653559435475268476}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.037926525, y: 0.06474674, z: 0.15123579}
+  m_Center: {x: -0.0010567084, y: 0.035628945, z: 0.0037424117}
 --- !u!1 &1653559435475268478
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,9 +658,71 @@ Transform:
   - {fileID: 1653559435474775898}
   - {fileID: 1653559435474775902}
   - {fileID: 1354402197503367970}
+  - {fileID: 3484470772864036394}
+  - {fileID: 3247706434203557738}
   m_Father: {fileID: 1653559435474775900}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &3703074330013125322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3247706434203557738}
+  m_Layer: 0
+  m_Name: CylinderOUT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3247706434203557738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3703074330013125322}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.037, y: 0.0239, z: -0.0332}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5100887924815460732}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4077302356356268014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3484470772864036394}
+  m_Layer: 0
+  m_Name: CylinderIN
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3484470772864036394
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4077302356356268014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.03703869, y: 0.034926414, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5100887924815460732}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6396271965721920841
 GameObject:
   m_ObjectHideFlags: 0

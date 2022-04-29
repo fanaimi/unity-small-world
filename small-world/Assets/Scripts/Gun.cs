@@ -14,26 +14,39 @@ public class Gun : MonoBehaviour
     [SerializeField] private Transform m_munition;
     [SerializeField] private Transform m_trigger;
     [SerializeField] private Transform m_gunSpawningPoint;
+    [SerializeField] private Transform m_cylinderIN;
+    [SerializeField] private Transform m_cylinderOUT;
     [SerializeField] private float m_shootForce;
     [SerializeField] private Rigidbody m_rb;
     [SerializeField] private AudioSource m_bang;
-    [SerializeField] private XRInteractorLineVisual m_LineVisual; 
+    [SerializeField] private XRInteractorLineVisual m_LineVisual;
 
-    [SerializeField] public enum GunHandType { LeftHandGun, RightHandGun };
+    [SerializeField] private  enum GunHandSide { LeftHandGun, RightHandGun };
+    [SerializeField] private GunHandSide m_gunSide;
+
+    [SerializeField] private bool m_isBeingHeld;
+    [SerializeField] private bool m_isLoaded;
+    [SerializeField] private bool m_isCylinderIn;
+
+    private void Awake()
+    {
+        m_isLoaded = true;
+        m_isCylinderIn = true;
+    }
 
     public void OnGrabbedGun()
     {
         // print("grabbed");
-        // m_leftLineVisual.enabled = false;
-        // m_rightLineVisual.enabled = false;
+        m_LineVisual.enabled = false;
+        m_isBeingHeld = true;
 
     }
 
     public void OnReleasedGun()
     {
 
-       // m_leftLineVisual.enabled = true;
-       // m_rightLineVisual.enabled = true;
+        m_LineVisual.enabled = true;
+        m_isBeingHeld = false;
     }
 
     
@@ -59,6 +72,27 @@ public class Gun : MonoBehaviour
     public void OnGunTriggerReleased()
     {
         m_trigger.Rotate(0, 0, -25);
+    }
+
+
+
+    public void OnPrimaryBtnPressed()
+    {
+        if (m_isBeingHeld && m_isCylinderIn)
+        {
+            m_isCylinderIn = false;
+            Debug.Log(gameObject.name + " open cylinder");
+        }
+    }
+
+    public void OnSecondaryBtnPressed()
+    {
+
+        if (m_isBeingHeld && !m_isCylinderIn)
+        {
+            m_isCylinderIn = true;
+            Debug.Log(gameObject.name + " close cylinder");
+        }
     }
 
 }

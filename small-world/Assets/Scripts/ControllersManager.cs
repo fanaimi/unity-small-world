@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.Events;
 
 
 /// <summary>
@@ -14,16 +15,18 @@ public class ControllersManager : MonoBehaviour
     private static ControllersManager _instance;
     public static ControllersManager Instance { get { return _instance; } }
 
-    [SerializeField]
-    private InputDeviceCharacteristics m_rightCtrlChars;
+    //[SerializeField] private InputDeviceCharacteristics m_rightCtrlChars;
+
+    [SerializeField] private Gun m_LEFTgun; 
+    [SerializeField] private Gun m_Rightgun; 
 
     private InputDevice m_rightController;
     private InputDevice m_leftController;
 
-    public bool m_btnA_pressed;
-    public bool m_btnB_pressed;
-    public bool m_btnX_pressed;
-    public bool m_btnY_pressed;
+    [SerializeField] private UnityEvent m_btnA_pressed;
+    [SerializeField] private UnityEvent m_btnB_pressed;
+    [SerializeField] private UnityEvent m_btnX_pressed;
+    [SerializeField] private UnityEvent m_btnY_pressed;
 
     // list to store all devices
     private List<InputDevice> m_devices = new List<InputDevice>();
@@ -98,10 +101,10 @@ public class ControllersManager : MonoBehaviour
         m_leftController.TryGetFeatureValue(CommonUsages.primaryButton, out bool btnX);
         m_leftController.TryGetFeatureValue(CommonUsages.secondaryButton, out bool btnY);
 
-        m_btnA_pressed = btnA;
-        m_btnB_pressed = btnB;
-        m_btnX_pressed = btnX;
-        m_btnY_pressed = btnY;
+        if (btnA) m_btnA_pressed.Invoke();
+        if (btnB) m_btnB_pressed.Invoke();
+        if (btnX) m_btnX_pressed.Invoke();
+        if (btnY) m_btnY_pressed.Invoke();
 
 
         // DebugGlobal();
@@ -114,4 +117,11 @@ public class ControllersManager : MonoBehaviour
         Debug.Log("X: " + m_btnX_pressed);
         Debug.Log("Y: " + m_btnY_pressed);
     }
+
+
+
+
+
+
+
 }

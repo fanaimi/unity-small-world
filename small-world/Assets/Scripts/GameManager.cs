@@ -13,6 +13,15 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public static GameManager Instance { get { return _instance; } }
 
+    // ==== GUNS BOOLEANS =====
+    public bool m_holdingLEFTGun;
+    public bool m_holdingRIGHTGun;
+    public bool m_LEFTGunLoaded;
+    public bool m_RIGHTGunLoaded;
+    public bool m_LEFTGunAmmoIn;
+    public bool m_LEFTGunAmmoRight;
+
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
