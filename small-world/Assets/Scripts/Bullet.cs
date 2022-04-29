@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float m_speed = 100f;
 
     // Update is called once per frame
     void Update()
     {
-        
+        // moving bullets
+        transform.Translate(0, 0, m_speed * Time.deltaTime);
+      
+        // collision detection with Raycast
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 1f))
+        {
+            //Debug.DrawLine(transform.position, transform.position + new Vector3(100, 100, 100), Color.green, 5f);
+            
+
+            if (hit.transform.gameObject.layer == 8) // 8: planets
+            {
+                // we hit a planet, destroying planet and bullet
+                Destroy(gameObject);
+                Destroy(hit.collider.gameObject);
+
+                // updating score
+
+                // showing particle system animation
+
+                // example on how to invoke GameManager funcitons
+                // GameManager.Instance.TestFoo();
+            }
+        }
+
+
     }
 }

@@ -21,7 +21,7 @@ public class Planet : MonoBehaviour
                 Random.Range(10, 30),
                 0 //Random.Range(-2f, 2f)
             );
-        print(m_shootingDirection * UnityEngine.Random.Range(30, m_maxThrust));
+        // print(m_shootingDirection * UnityEngine.Random.Range(30, m_maxThrust));
         m_rb.AddForce(m_shootingDirection * UnityEngine.Random.Range(30, m_maxThrust) );
     }
 
@@ -30,15 +30,9 @@ public class Planet : MonoBehaviour
     {
         if (collision.gameObject.layer == 6 ) // floor
         {
-            //Destroy(gameObject);
+           //  Destroy(gameObject);
         }
 
-
-        if (collision.gameObject.layer == 7) // bullet
-        {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
     }
 
 }

@@ -3,25 +3,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// @gObj   GameManager
+/// @desc   Singleton, can be used to store score, updating UI etc
+/// </summary>
 public class GameManager : MonoBehaviour
 {
+    private static GameManager _instance;
+    public static GameManager Instance { get { return _instance; } }
 
-    [SerializeField] private GameObject m_planetPrefab;
+    // ==== GUNS BOOLEANS =====
+    public bool m_holdingLEFTGun;
+    public bool m_holdingRIGHTGun;
+    public bool m_LEFTGunLoaded;
+    public bool m_RIGHTGunLoaded;
+    public bool m_LEFTGunAmmoIn;
+    public bool m_LEFTGunAmmoRight;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        // InvokeRepeating("InstantiatePlanet", 1f, 5f);
-    }
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
 
-    private void InstantiatePlanet()
-    {
-        Instantiate(m_planetPrefab, new Vector3(1, 1, 1), Quaternion.identity);
-    }
+        // if we want this to survive throughout different levels and scenes
+        DontDestroyOnLoad(gameObject);
 
-    // Update is called once per frame
-    void Update()
+    } // Awake
+
+
+
+    public void TestFoo()
     {
-        
+        Debug.Log("test foo from Game Manager Singleton");
     }
+    
 }

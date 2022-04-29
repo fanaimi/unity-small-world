@@ -27,9 +27,9 @@ public class PlanetController : MonoBehaviour
 
     private void IntantiateRandomPlanetAtRandomShooter()
     {
-        int randPlanetIndex = UnityEngine.Random.Range(0, m_planetPrefabs.Length-1);
-        int randShooterIndex = UnityEngine.Random.Range(0, m_planetShooters.Length-1);
-        int randHitPrefab = UnityEngine.Random.Range(0, m_hitPrefabs.Length - 1);
+        int randPlanetIndex = UnityEngine.Random.Range(0, m_planetPrefabs.Length);
+        int randShooterIndex = UnityEngine.Random.Range(0, m_planetShooters.Length);
+        int randHitPrefab = UnityEngine.Random.Range(0, m_hitPrefabs.Length);
         m_clip.Play();
         Instantiate(
             m_hitPrefabs[randHitPrefab],
