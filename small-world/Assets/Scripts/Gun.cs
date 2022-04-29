@@ -68,10 +68,9 @@ public class Gun : MonoBehaviour
             { 
                 m_bulletsLeft--;
                 m_bang.Play();
-                m_munition.Rotate(25, 0, 0);
+                m_munition.Rotate(45, 0, 0);
                 m_trigger.Rotate(0, 0, 25);
-                Rigidbody m_newBullet =
-                Instantiate(m_bulletPrefab, m_gunSpawningPoint.position, m_gunSpawningPoint.rotation);
+                Rigidbody m_newBullet =Instantiate(m_bulletPrefab, m_gunSpawningPoint.position, m_gunSpawningPoint.rotation);
                 Destroy(m_newBullet, 5f);
             }    
                
@@ -83,7 +82,7 @@ public class Gun : MonoBehaviour
         {
             print("click!");
             m_emptyClick.Play();
-            m_munition.Rotate(25, 0, 0);
+            m_munition.Rotate(45, 0, 0);
             m_trigger.Rotate(0, 0, 25);
         }
 

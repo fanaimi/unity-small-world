@@ -25,12 +25,15 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
                 Destroy(hit.collider.gameObject);
 
-                // updating score
 
-                // showing particle system animation
+                // =============== ADD ANY REACTION TO PLANET HITTING ===================
 
-                // example on how to invoke GameManager funcitons
-                // GameManager.Instance.TestFoo();
+
+
+                // add KINOGLITCH to environment
+
+                // showing confetti particle system animation
+
             }
         }
 
