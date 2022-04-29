@@ -16,6 +16,9 @@ public class Gun : MonoBehaviour
     [SerializeField] private Transform m_gunSpawningPoint;
     [SerializeField] private Transform m_cylinderIN;
     [SerializeField] private Transform m_cylinderOUT;
+    [SerializeField] private Renderer m_AmmoLedRend;
+    [SerializeField] private Renderer[] m_shellRenderers;
+    [SerializeField] private Material[] m_ledMaterials;
     [SerializeField] private float m_shootForce;
     [SerializeField] private Rigidbody m_rb;
     [SerializeField] private AudioSource m_bang;
@@ -39,6 +42,7 @@ public class Gun : MonoBehaviour
         m_isLoaded = true;
         m_isCylinderIn = true;
         m_bulletsLeft = m_maxBulletsNo;
+        SwitchLEDmaterial(1);
     }
 
     public void OnGrabbedGun()
@@ -65,17 +69,22 @@ public class Gun : MonoBehaviour
         if (m_isLoaded && m_isCylinderIn) {
             //print("bang!");
             if (m_bulletsLeft > 0)
-            { 
+            {
                 m_bulletsLeft--;
                 m_bang.Play();
-                m_munition.Rotate(25, 0, 0);
+                m_munition.Rotate(25, 0, 0); // 25 deg instead of 45 to make movement more visible, maybe add coroutine?
                 m_trigger.Rotate(0, 0, 25);
                 Rigidbody m_newBullet =
                 Instantiate(m_bulletPrefab, m_gunSpawningPoint.position, m_gunSpawningPoint.rotation);
                 Destroy(m_newBullet, 5f);
-            }    
-               
-            else m_isLoaded = false;
+            }
+
+            else
+            {
+                m_isLoaded = false;
+                SwitchLEDmaterial(0);
+            }
+
             
         }
 
@@ -92,7 +101,7 @@ public class Gun : MonoBehaviour
 
     public void OnGunTriggerReleased()
     {
-        m_trigger.Rotate(0, 0, -25);
+        if (m_isCylinderIn) m_trigger.Rotate(0, 0, -25);
     }
 
 
@@ -117,8 +126,19 @@ public class Gun : MonoBehaviour
             m_munition.position = m_cylinderIN.position;
             m_isCylinderIn = true;
             m_isLoaded = true;
+            SwitchLEDmaterial(1);
             m_bulletsLeft = m_maxBulletsNo;
             Debug.Log(gameObject.name + " close cylinder");
+        }
+    }
+
+
+    private void SwitchLEDmaterial(int index)
+    {
+        m_AmmoLedRend.sharedMaterial = m_ledMaterials[index];
+        foreach (var shell in m_shellRenderers)
+        {
+            shell.sharedMaterial = m_ledMaterials[index];
         }
     }
 

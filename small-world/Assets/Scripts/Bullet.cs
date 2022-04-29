@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float m_speed = 100f;
+    [SerializeField] private float m_range = 1.5f;
 
     // Update is called once per frame
     void Update()
@@ -14,7 +15,7 @@ public class Bullet : MonoBehaviour
       
         // collision detection with Raycast
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 1f))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, m_range))
         {
             //Debug.DrawLine(transform.position, transform.position + new Vector3(100, 100, 100), Color.green, 5f);
             
@@ -25,12 +26,14 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
                 Destroy(hit.collider.gameObject);
 
-                // updating score
+                // =============== ADD ANY REACTION TO PLANET HITTING ===================
 
-                // showing particle system animation
 
-                // example on how to invoke GameManager funcitons
-                // GameManager.Instance.TestFoo();
+
+                // add KINOGLITCH to environment
+
+                // showing confetti particle system animation
+
             }
         }
 
