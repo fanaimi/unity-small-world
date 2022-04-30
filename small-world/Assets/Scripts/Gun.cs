@@ -36,7 +36,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private bool m_isBeingHeld;
     [SerializeField] private bool m_isLoaded;
     [SerializeField] private bool m_isCylinderIn;
-
+    [SerializeField] private bool m_hasTriggerMoved;
     private void Awake()
     {
         m_isLoaded = true;
@@ -74,6 +74,8 @@ public class Gun : MonoBehaviour
                 m_bang.Play();
                 m_munition.Rotate(25, 0, 0); // 25 deg instead of 45 to make movement more visible, maybe add coroutine?
                 m_trigger.Rotate(0, 0, 25);
+                m_shellRenderers[7 - m_bulletsLeft].sharedMaterial = m_ledMaterials[0];
+                m_hasTriggerMoved = true;
                 Rigidbody m_newBullet =
                 Instantiate(m_bulletPrefab, m_gunSpawningPoint.position, m_gunSpawningPoint.rotation);
                 Destroy(m_newBullet, 5f);
@@ -94,6 +96,7 @@ public class Gun : MonoBehaviour
             m_emptyClick.Play();
             m_munition.Rotate(25, 0, 0);
             m_trigger.Rotate(0, 0, 25);
+            m_hasTriggerMoved = true;
         }
 
     }
@@ -101,7 +104,11 @@ public class Gun : MonoBehaviour
 
     public void OnGunTriggerReleased()
     {
-        if (m_isCylinderIn) m_trigger.Rotate(0, 0, -25);
+        if (m_isCylinderIn && m_hasTriggerMoved)
+        {
+            m_trigger.Rotate(0, 0, -25);
+            m_hasTriggerMoved = false;
+        }
     }
 
 
@@ -136,10 +143,14 @@ public class Gun : MonoBehaviour
     private void SwitchLEDmaterial(int index)
     {
         m_AmmoLedRend.sharedMaterial = m_ledMaterials[index];
-        foreach (var shell in m_shellRenderers)
-        {
-            shell.sharedMaterial = m_ledMaterials[index];
-        }
+        //foreach (var shell in m_shellRenderers)
+        //{
+        //    shell.sharedMaterial = m_ledMaterials[index];
+        //}
+
     }
+
+    //7  6  5  4  3  2  1  0  
+    //0  1  2  3  4  5  6  7
 
 }
