@@ -30,7 +30,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private  enum GunHandSide { LeftHandGun, RightHandGun };
     [SerializeField] private GunHandSide m_gunSide;
 
-    private int m_maxBulletsNo  = 7;
+    private int m_maxBulletsNo  = 8;
     private int m_bulletsLeft;
 
     [SerializeField] private bool m_isBeingHeld;
@@ -43,6 +43,7 @@ public class Gun : MonoBehaviour
         m_isCylinderIn = true;
         m_bulletsLeft = m_maxBulletsNo;
         SwitchLEDmaterial(1);
+        SwitchAllShellsmaterial(1);
     }
 
     public void OnGrabbedGun()
@@ -134,6 +135,7 @@ public class Gun : MonoBehaviour
             m_isCylinderIn = true;
             m_isLoaded = true;
             SwitchLEDmaterial(1);
+            SwitchAllShellsmaterial(1);
             m_bulletsLeft = m_maxBulletsNo;
             Debug.Log(gameObject.name + " close cylinder");
         }
@@ -143,10 +145,14 @@ public class Gun : MonoBehaviour
     private void SwitchLEDmaterial(int index)
     {
         m_AmmoLedRend.sharedMaterial = m_ledMaterials[index];
-        //foreach (var shell in m_shellRenderers)
-        //{
-        //    shell.sharedMaterial = m_ledMaterials[index];
-        //}
+    }
+
+    private void SwitchAllShellsmaterial(int index)
+    {
+        foreach (var shell in m_shellRenderers)
+        {
+            shell.sharedMaterial = m_ledMaterials[index];
+        }
 
     }
 
