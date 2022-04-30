@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+
     [SerializeField] private float m_speed = 100f;
     [SerializeField] private float m_range = 1.5f;
+    [SerializeField] private ParticleSystem m_confettiPrefab;
 
     // Update is called once per frame
     void Update()
@@ -22,6 +24,13 @@ public class Bullet : MonoBehaviour
 
             if (hit.transform.gameObject.layer == 8) // 8: planets
             {
+
+                // showing confetti particle system animation
+                ParticleSystem newConfetti =
+                    Instantiate(m_confettiPrefab, gameObject.transform.position, Quaternion.identity);
+                newConfetti.Play();
+
+
                 // we hit a planet, destroying planet and bullet
                 Destroy(gameObject);
                 Destroy(hit.collider.gameObject);
@@ -31,8 +40,6 @@ public class Bullet : MonoBehaviour
 
 
                 // add KINOGLITCH to environment
-
-                // showing confetti particle system animation
 
             }
         }

@@ -226,3 +226,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 100
   m_range: 1.5
+  m_confettiPrefab: {fileID: 9201266011259275122, guid: 7c19a3fc884d4484bafc2ece119e0695, type: 3}
